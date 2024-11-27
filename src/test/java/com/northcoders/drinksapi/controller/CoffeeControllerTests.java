@@ -26,12 +26,12 @@ public class CoffeeControllerTests {
     }
 
     @Test
-    public void testCoffeeNoQueryParam() throws Exception {
+    public void testCoffeeDefaultValue() throws Exception {
 
         String expectedValue = "latte";
 
         this.mockMvcController.perform(
-                        MockMvcRequestBuilders.get("/coffee").param("$.name", ""))
+                        MockMvcRequestBuilders.get("/coffee").param("$.name", "latte"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(expectedValue));
     }
