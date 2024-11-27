@@ -24,4 +24,26 @@ public class SodaControllerTests {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(expectedContent));
     }
+
+    @Test
+    public void testSodaDefaultValue() throws Exception {
+
+        String expectedValue = "coke";
+
+        this.mockMvcController.perform(
+                        MockMvcRequestBuilders.get("/soda").param("name", "coke"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(expectedValue));
+    }
+
+    @Test
+    public void testSoda() throws Exception {
+
+        String expectedValue = "fanta";
+
+        this.mockMvcController.perform(
+                        MockMvcRequestBuilders.get("/soda").param("name","fanta"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(expectedValue));
+    }
 }
