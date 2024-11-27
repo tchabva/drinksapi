@@ -31,7 +31,7 @@ public class CoffeeControllerTests {
         String expectedValue = "latte";
 
         this.mockMvcController.perform(
-                        MockMvcRequestBuilders.get("/coffee").param("name", "latte"))
+                        MockMvcRequestBuilders.get("/coffee").param("name", ""))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(expectedValue));
     }
